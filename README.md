@@ -2,7 +2,7 @@
 
 ## バージョン
 - python: 3.9.7
-- flask: 2.2.x
+- flask: 2.2.3
 
 ## 環境構築
 ```
@@ -14,5 +14,6 @@ $ source venv/bin/activate
 
 ## ライブラリ
 ```
+$ pip install --upgrade pip
 $ pip install flask
 ```
