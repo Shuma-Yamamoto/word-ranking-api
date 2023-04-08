@@ -89,7 +89,7 @@ def word_ranking(file):
     # トップ10が作成できない場合はランキングを返さない
     not_enough = 'ランキングを作成するのに十分な会話をしていないようです。'
     top_10_json = json.dumps(not_enough, ensure_ascii=False)
-    return not_enough
+    return jsonify({'message': not_enough})
 
 @app.route('/api', methods=['POST'])
 def api():
