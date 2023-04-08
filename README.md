@@ -1,8 +1,9 @@
 # word-ranking-api
 
 ## バージョン
-- python: 3.9.7
-- flask: 2.2.3
+- Python: 3.9.7
+- Flask: 2.2.3
+- SudachiPy: 0.6.7
 
 ## 環境構築
 ```
@@ -16,4 +17,6 @@ $ source venv/bin/activate
 ```
 $ pip install --upgrade pip
 $ pip install flask
+$ pip install sudachipy
+$ pip install sudachidict_core
 ```
