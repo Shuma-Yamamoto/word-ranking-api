@@ -1,7 +1,7 @@
 # word-ranking-api
 
 ## バージョン
-- Python: 3.9.7
+- Python: 3.9.16
 - Flask: 2.2.3
 - SudachiPy: 0.6.7
 
