@@ -5,9 +5,9 @@ from sudachipy import tokenizer, dictionary
 import collections
 import json
 
-ALLOWED_EXTENSION = 'txt'
-
 app = Flask(__name__)
+
+ALLOWED_EXTENSION = 'txt'
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -91,6 +91,10 @@ def word_ranking(file):
     top_10_json = json.dumps(not_enough, ensure_ascii=False)
     return jsonify({'message': not_enough})
 
+@app.route('/')
+def index():
+    return 'word-ranking-api'
+
 @app.route('/api', methods=['POST'])
 def api():
     file = request.files['file']
@@ -98,3 +102,6 @@ def api():
         file.save(file.filename)
         top_10_json = word_ranking(file)
         return top_10_json
+
+if __name__ == '__main__':
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
