@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask_cors import CORS
 import os
 import re
 from sudachipy import tokenizer, dictionary
@@ -6,6 +7,7 @@ import collections
 import json
 
 app = Flask(__name__)
+CORS(app)
 
 ALLOWED_EXTENSION = 'txt'
 
