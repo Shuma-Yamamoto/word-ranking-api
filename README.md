@@ -17,6 +17,7 @@ $ source venv/bin/activate
 ```
 $ pip install --upgrade pip
 $ pip install flask
+$ pip install flask-cors
 $ pip install sudachipy
 $ pip install sudachidict_core
 ```
