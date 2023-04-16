@@ -50,12 +50,14 @@ def word_ranking(file):
             if len(serial_talk)==10:
                 break
 
-    # 会話内容から英数字と特殊記号を削除
+    # 会話内容から英数字と特殊記号と除外ワードを削除
     alphanumeric_pattern = re.compile('[a-zA-Z0-9]+')
     mark_pattern = re.compile('[!"#$%&\'\\\\()*+,-./:;<=>?@[\\]^_`{|}~「」〔〕“”〈〉『』【】＆＊・（）＄＃＠。、？！｀＋￥％]')
+    forbidden_pattern = re.compile(r"スタンプ|写真|動画")
 
     talk_put_together = alphanumeric_pattern.sub('', talk_put_together)
     cleaned_talk = mark_pattern.sub('', talk_put_together)
+    cleaned_talk = forbidden_pattern.sub('', cleaned_talk)
 
     # 一度にトークン化できるバイト数に制限があるため10,000字ごとに分割
     max_length = 10000
