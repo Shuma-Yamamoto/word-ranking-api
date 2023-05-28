@@ -87,35 +87,63 @@ def word_ranking(file):
     # ランキングの作成
     ranking = collections.Counter(token_result).most_common()
 
-    # トップ10が作成できる場合はランキングを返す
-    if len(ranking)>=10:
-        # トップ10＆ローディング用の会話内容をjson形式に変換
-        top_10_list = []
-        serial_talk_list = []
+    # トップ10の作成
+    top_10_list = []
+    serial_talk_list = []
 
-        for i in range(10):
+    # トップ10＆ローディング用の会話内容をjson形式に変換
+    for i in range(10):
+        try:
             top_10_dict = {
-              'rank': i+1,
-              'word': ranking[i][0],
-              'num_of_use': ranking[i][1]
+            'rank': i+1,
+            'word': ranking[i][0],
+            'num_of_use': ranking[i][1]
             }
 
             serial_talk_dict = {
               'name': serial_talk[i][0],
               'talk': serial_talk[i][1]
             }
+        except:
+            top_10_dict = {
+            'rank': i+1,
+            'word': '',
+            'num_of_use': ''
+            }
 
-            top_10_list.append(top_10_dict)
-            serial_talk_list.append(serial_talk_dict)
+            serial_talk_dict = {
+              'name': '',
+              'talk': ''
+            }
 
-        top_10_json = json.dumps(top_10_list, ensure_ascii=False)
-        serial_talk_json = json.dumps(serial_talk_list, ensure_ascii=False)
-        return jsonify({'top_10': top_10_json, 'serial_talk': serial_talk_json})
+        top_10_list.append(top_10_dict)
+        serial_talk_list.append(serial_talk_dict)
 
-    # トップ10が作成できない場合はランキングを返さない
-    not_enough = 'ランキングを作成するのに十分な会話をしていないようです。'
-    top_10_json = json.dumps(not_enough, ensure_ascii=False)
-    return jsonify({'message': not_enough})
+    top_10_json = json.dumps(top_10_list, ensure_ascii=False)
+    serial_talk_json = json.dumps(serial_talk_list, ensure_ascii=False)
+
+    # トップ100の作成
+    top_100_list = []
+
+    # トップ100をjson形式に変換
+    for i in range(100):
+        try:
+            top_100_dict = {
+            'rank': i+1,
+            'word': ranking[i][0],
+            'num_of_use': ranking[i][1]
+            }
+        except:
+            top_100_dict = {
+            'rank': i+1,
+            'word': '',
+            'num_of_use': ''
+            }
+
+        top_100_list.append(top_100_dict)
+
+    top_100_json = json.dumps(top_100_list, ensure_ascii=False)
+    return jsonify({'top_10': top_10_json, 'top_100': top_100_json, 'serial_talk': serial_talk_json})
 
 @app.route('/')
 def index():
