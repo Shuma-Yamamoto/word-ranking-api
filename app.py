@@ -95,9 +95,9 @@ def word_ranking(file):
     for i in range(10):
         try:
             top_10_dict = {
-            'rank': i+1,
-            'word': ranking[i][0],
-            'num_of_use': ranking[i][1]
+              'rank': i+1,
+              'word': ranking[i][0],
+              'num_of_use': ranking[i][1]
             }
 
             serial_talk_dict = {
@@ -106,9 +106,9 @@ def word_ranking(file):
             }
         except:
             top_10_dict = {
-            'rank': i+1,
-            'word': '',
-            'num_of_use': ''
+              'rank': i+1,
+              'word': '',
+              'num_of_use': ''
             }
 
             serial_talk_dict = {
@@ -129,15 +129,15 @@ def word_ranking(file):
     for i in range(100):
         try:
             top_100_dict = {
-            'rank': i+1,
-            'word': ranking[i][0],
-            'num_of_use': ranking[i][1]
+              'rank': i+1,
+              'word': ranking[i][0],
+              'num_of_use': ranking[i][1]
             }
         except:
             top_100_dict = {
-            'rank': i+1,
-            'word': '',
-            'num_of_use': ''
+              'rank': i+1,
+              'word': '',
+              'num_of_use': ''
             }
 
         top_100_list.append(top_100_dict)
